@@ -1,2 +1,2 @@
 # docker-traefik-mern-example
-An 
+A simple MERN example with traefik and docker
