@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  reverse-proxy:
+    image: traefik # The official Traefik docker image
+    command: --api --docker # Enables the web UI and tells Traefik to listen to docker
+    ports:
+      - "80:80" # The HTTP port
+      - "8080:8080" # The Web UI (enabled by --api)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+  # whoami:
+  #   image: containous/whoami # A container that exposes an API to show its IP address
+  #   labels:
+  #     - "traefik.frontend.rule=Host:whoami.docker.localhost"
+  node:
+    image: node:lts-alpine
+    volumes:
+      - ./node:/app
+    working_dir: /app
+    ports:
+      - "8080"
+      - "9229:9229"
+    labels:
+      - "traefik.frontend.rule=Host:node.docker.localhost"
+    command: yarn start

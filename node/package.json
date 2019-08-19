@@ -1,0 +1,20 @@
+{
+  "name": "docker-traefik-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "yarn build",
+    "build": "tsc",
+    "start": "node --inspect=0.0.0.0 ./build/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0"
+  }
+}
