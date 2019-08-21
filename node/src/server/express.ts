@@ -1,11 +1,14 @@
 import express from "express";
-import mw from "../middleware";
+import { mw, jwt } from "../middleware";
 import api from "../api";
+import db from "../db";
 
-const webServer = () => {
+const webServer = async () => {
   console.info("Starting Express server");
   const app = express();
+  await db();
 
+  jwt.initialize();
   app.use(mw);
 
   api(app);

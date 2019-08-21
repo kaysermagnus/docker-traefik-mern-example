@@ -1,3 +1,3 @@
 import restify from "restify";
-declare const webServer: () => restify.Server;
+declare const webServer: () => Promise<restify.Server>;
 export default webServer;

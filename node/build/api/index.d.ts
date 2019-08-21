@@ -1,2 +1,2 @@
-declare const route: (app: any) => any;
+declare const route: (app: any) => void;
 export default route;

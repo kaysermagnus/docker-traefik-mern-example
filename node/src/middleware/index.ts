@@ -1,14 +1,7 @@
-import responseTime from "response-time";
+import example from "./example";
+import responseTime from "./responseTime";
+import jwt from "./jwt";
 
-const request = (req: any, res: any, next: any) => {
-  if (req.headers.isallowed) {
-    return next();
-  }
-  res.send(400, { error: "Not allowed" });
-};
+const mw = [example, responseTime];
 
-const timer = responseTime();
-
-const mw = [request, timer];
-
-export default mw;
+export { mw, jwt };

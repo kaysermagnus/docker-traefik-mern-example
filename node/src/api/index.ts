@@ -1,6 +1,7 @@
 import os from "os";
+import passport from "passport";
 
-const route = (app: any) =>
+const route = (app: any) => {
   app.get("/", (_req: any, res: any, next: any) => {
     const interfaces = os.networkInterfaces();
 
@@ -14,5 +15,12 @@ const route = (app: any) =>
     });
     next();
   });
+
+  app.post("/login", passport.authenticate("jwt"), (req: any, res: any) => {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect("/users/" + req.user.username);
+  });
+};
 
 export default route;

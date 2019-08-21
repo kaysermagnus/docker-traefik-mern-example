@@ -3,15 +3,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var server_1 = require("./server");
 switch (process.env.SERVER_TYPE) {
     case "express":
-        var expressServer_1 = server_1.startExpressServer().listen(8080);
-        expressServer_1.on("listening", function () {
-            return console.log("listening on:", expressServer_1.address());
+        server_1.startExpressServer().then(function (expressServer) {
+            var serve = expressServer.listen(8080);
+            expressServer.on("listening", function () {
+                return console.log("listening on:", serve.address());
+            });
         });
         break;
     case "restify":
-        var restifyServer_1 = server_1.startRestifyServer().listen(8080);
-        restifyServer_1.on("listening", function () {
-            return console.log("listening on:", restifyServer_1.address());
+        server_1.startRestifyServer().then(function (restifyServer) {
+            restifyServer.listen(8080);
+            restifyServer.on("listening", function () {
+                return console.log("listening on:", restifyServer.address());
+            });
         });
         break;
     default:
