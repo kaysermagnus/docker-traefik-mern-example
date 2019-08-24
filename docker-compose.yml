@@ -23,7 +23,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example1234
       MYSQL_USER: test
-      MYSQL_PASSWORD: 1234
+      # MYSQL_PASSWORD: 1234
       MYSQL_DATABASE: test
     labels:
       - "traefik.enable=false"
@@ -44,13 +44,14 @@ services:
       - db
       - redis
     environment:
-      # - SERVER_TYPE=restify
-      - SERVER_TYPE=express
+      - SERVER_TYPE=restify
+      # - SERVER_TYPE=express
       - DB_HOST=mysql_db
       - DB_PORT=3306
       - DB_USER=root
       - DB_PASSWORD=example1234
       - DB_NAME=test
+      - DB_DROP_SCHEMA=true
     ports:
       - "8080"
       - "9229:9229"

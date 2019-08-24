@@ -40,9 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var middleware_1 = require("../middleware");
-var api_1 = __importDefault(require("../api"));
-var db_1 = __importDefault(require("../db"));
+var config_1 = __importDefault(require("./config"));
 var webServer = function () { return __awaiter(_this, void 0, void 0, function () {
     var app;
     return __generator(this, function (_a) {
@@ -50,12 +48,9 @@ var webServer = function () { return __awaiter(_this, void 0, void 0, function (
             case 0:
                 console.info("Starting Express server");
                 app = express_1.default();
-                return [4, db_1.default()];
+                return [4, config_1.default(app)];
             case 1:
                 _a.sent();
-                middleware_1.jwt.initialize();
-                app.use(middleware_1.mw);
-                api_1.default(app);
                 return [2, app];
         }
     });

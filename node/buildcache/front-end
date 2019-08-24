@@ -1338,19 +1338,39 @@
         "signature": "87c5a433521c49fd7ded283bb3f6a1991976f0b44009751dd39ebea612b56a35"
       },
       "/app/src/db/configuration.ts": {
-        "version": "5e6d16f6c8c41caba915cd8a59ad9f1567c9bb993b2fa22175eb88bd8f825b19",
+        "version": "b10418290e76dec97b4177c2bfa83b9557729d956f0bca5cf78f80b701394002",
         "signature": "8aeb246e5335b8f4087754894307e3d1f24883be3817618100fd15be05034b6b"
       },
-      "/app/src/db/connection.ts": {
-        "version": "72665aee40dc34c8896979e8b8a56f5060c79ed640ff7f53e946f0e8cd5fa4a8",
-        "signature": "e593cc9e8cd592da536824b11da42067dd94eac8497aca7ab7f759886a010ada"
+      "/app/src/db/DbConnection.ts": {
+        "version": "1fbef11a65f577dbb3cae0fc1aaf3ba88dcb542d06ee89f836b4e935c31c03ad",
+        "signature": "fea4e649c5676b2f909c4572c60285784c64ca4d1ad87dd0c8f955f8c6389c33"
+      },
+      "/app/src/db/models/user.entity.ts": {
+        "version": "551b5ee8b4df98adb984dd30570e29c8c9db0ece35b702a07b90e00cf6709725",
+        "signature": "9631025fba6d494643ecbab085fbc91680081552d963905740e500ee65afce48"
+      },
+      "/app/src/db/models/index.ts": {
+        "version": "f0fedcbb351f6e979328ecf1bc74ddf020c4a371f6c11cc67c10ea437ef13972",
+        "signature": "f0fedcbb351f6e979328ecf1bc74ddf020c4a371f6c11cc67c10ea437ef13972"
+      },
+      "/app/src/db/seedTables/users.ts": {
+        "version": "350173d8b754c4f1370da6bbb26ac1fd2ca4f6dd57873c517b1e456a37847929",
+        "signature": "92d670471735241854087a69fb5450db1c1754dd0107ea938986dabc9e33aff9"
+      },
+      "/app/src/db/seedTables/index.ts": {
+        "version": "dbe9091f88a335c9ee8b3231589506ce06c370ef2865b69eb455535ff1c3e0fb",
+        "signature": "dbe9091f88a335c9ee8b3231589506ce06c370ef2865b69eb455535ff1c3e0fb"
       },
       "/app/src/db/index.ts": {
-        "version": "18b55c8e4a86ff1249d16524cd6a16ee9e46f2f53a0e186ea4c926b680f08e67",
+        "version": "a736354a84021d89d7820686de462cfd1f00730af376b06a361393b6afae7ae0",
         "signature": "152cb509d6e40c76061677258d10d267d17258a4fa6125859c56b06be4e3dad1"
       },
+      "/app/src/server/config.ts": {
+        "version": "a11a8e5acfa59ee9d558c955d54a1381888b4b920e17721b940b128b319f8caf",
+        "signature": "b1eaaaa7aea990784fa46ab6753b379433a27d0a5524f12fe30ff377f442aefa"
+      },
       "/app/src/server/express.ts": {
-        "version": "575e0b8abcebb55a1037cedf7ce6ed173d068634fac91472894e347968001c35",
+        "version": "3c3693875f055a6e43a6e7d69b2628af795b5404332bfcf2feb3016a217d9c34",
         "signature": "7b7fd1b78adb871d3cb640d9972aa746ae91c734076e8ae66d2d5a379f63e030"
       },
       "/app/node_modules/@types/accepts/index.d.ts": {
@@ -1398,7 +1418,7 @@
         "signature": "b707b374b8776f5fe11e5b8179da122cdc30e90de8947c970b9be950e6301297"
       },
       "/app/src/server/restify.ts": {
-        "version": "c15277b9fe696ec0a9c61060483be0871dfd59970aa6c32ed29a49afd2632b3a",
+        "version": "1d5f34ab6500de8035ca935d4c89b427ac306ee24a24080529c28efcd6887c1f",
         "signature": "ae0af863c7ecb0042360d839d6fa056ded9ef2ff2c7df57b9f9f904e6d2f9636"
       },
       "/app/src/server/index.ts": {
@@ -1412,10 +1432,6 @@
       "/app/src/api/auth.ts": {
         "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-      },
-      "/app/src/db/models/user.entity.ts": {
-        "version": "551b5ee8b4df98adb984dd30570e29c8c9db0ece35b702a07b90e00cf6709725",
-        "signature": "9631025fba6d494643ecbab085fbc91680081552d963905740e500ee65afce48"
       }
     },
     "options": {
@@ -3588,22 +3604,49 @@
         "/app/node_modules/@types/node/util.d.ts",
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "/app/src/db/connection.ts": [
+      "/app/src/db/DbConnection.ts": [
         "/app/node_modules/typeorm/index.d.ts",
         "/app/src/db/configuration.ts",
         "/app/node_modules/@types/node/util.d.ts",
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "/app/src/db/models/user.entity.ts": [
+        "/app/node_modules/typeorm/index.d.ts",
+        "/app/node_modules/@types/node/util.d.ts",
+        "/app/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/app/src/db/models/index.ts": [
+        "/app/src/db/models/user.entity.ts",
+        "/app/node_modules/@types/node/util.d.ts",
+        "/app/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/app/src/db/seedTables/users.ts": [
+        "/app/src/db/models/index.ts",
+        "/app/src/db/DbConnection.ts",
+        "/app/node_modules/@types/node/util.d.ts",
+        "/app/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/app/src/db/seedTables/index.ts": [
+        "/app/src/db/seedTables/users.ts",
+        "/app/node_modules/@types/node/util.d.ts",
+        "/app/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "/app/src/db/index.ts": [
-        "/app/src/db/connection.ts",
+        "/app/src/db/DbConnection.ts",
+        "/app/src/db/seedTables/index.ts",
+        "/app/node_modules/@types/node/util.d.ts",
+        "/app/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/app/src/server/config.ts": [
+        "/app/src/middleware/index.ts",
+        "/app/src/api/index.ts",
+        "/app/src/db/index.ts",
         "/app/node_modules/@types/node/util.d.ts",
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "/app/src/server/express.ts": [
         "/app/node_modules/@types/express/index.d.ts",
-        "/app/src/middleware/index.ts",
-        "/app/src/api/index.ts",
-        "/app/src/db/index.ts",
+        "/app/src/server/config.ts",
         "/app/node_modules/@types/node/util.d.ts",
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -3689,9 +3732,7 @@
       ],
       "/app/src/server/restify.ts": [
         "/app/node_modules/@types/restify/index.d.ts",
-        "/app/src/middleware/index.ts",
-        "/app/src/api/index.ts",
-        "/app/src/db/index.ts",
+        "/app/src/server/config.ts",
         "/app/node_modules/@types/node/util.d.ts",
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -3708,11 +3749,6 @@
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "/app/src/api/auth.ts": [
-        "/app/node_modules/@types/node/util.d.ts",
-        "/app/node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "/app/src/db/models/user.entity.ts": [
-        "/app/node_modules/typeorm/index.d.ts",
         "/app/node_modules/@types/node/util.d.ts",
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -5851,8 +5887,8 @@
       "/app/src/db/configuration.ts": [
         "/app/node_modules/typeorm/index.d.ts"
       ],
-      "/app/src/db/connection.ts": [
-        "/app/node_modules/typeorm/index.d.ts"
+      "/app/src/db/models/index.ts": [
+        "/app/src/db/models/user.entity.ts"
       ],
       "/app/src/server/express.ts": [
         "/app/node_modules/@types/express-serve-static-core/index.d.ts"
@@ -5941,6 +5977,12 @@
         "/app/src/server/express.ts",
         "/app/src/server/koa.ts",
         "/app/src/server/restify.ts"
+      ],
+      "/app/src/db/DbConnection.ts": [
+        "/app/node_modules/typeorm/index.d.ts"
+      ],
+      "/app/src/db/seedTables/index.ts": [
+        "/app/src/db/seedTables/users.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -6279,9 +6321,8 @@
       "/app/node_modules/typeorm/util/PromiseUtils.d.ts",
       "/app/node_modules/typeorm/index.d.ts",
       "/app/src/db/configuration.ts",
-      "/app/src/db/connection.ts",
-      "/app/src/db/index.ts",
-      "/app/src/server/express.ts",
+      "/app/src/db/models/user.entity.ts",
+      "/app/src/db/models/index.ts",
       "/app/node_modules/@types/accepts/index.d.ts",
       "/app/node_modules/@types/keygrip/index.d.ts",
       "/app/node_modules/@types/cookies/index.d.ts",
@@ -6293,11 +6334,16 @@
       "/app/node_modules/@types/bunyan/index.d.ts",
       "/app/node_modules/@types/spdy/index.d.ts",
       "/app/node_modules/@types/restify/index.d.ts",
-      "/app/src/server/restify.ts",
       "/app/src/server/index.ts",
-      "/app/src/index.ts",
       "/app/src/api/auth.ts",
-      "/app/src/db/models/user.entity.ts"
+      "/app/src/db/DbConnection.ts",
+      "/app/src/db/seedTables/users.ts",
+      "/app/src/db/seedTables/index.ts",
+      "/app/src/db/index.ts",
+      "/app/src/server/config.ts",
+      "/app/src/server/express.ts",
+      "/app/src/server/restify.ts",
+      "/app/src/index.ts"
     ]
   },
   "version": "3.5.3"

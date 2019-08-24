@@ -9,8 +9,9 @@ const config: ConnectionOptions = {
   database: process.env.DB_NAME || "test",
   entities: [__dirname + "/models/*.entity.js"],
   synchronize: true,
-  debug: true/* ,
-  dropSchema: true */
+  dropSchema:
+    process.env.DB_DROP_SCHEMA === "true" || !!process.env.DB_DROP_SCHEMA,
+  debug: process.env.DB_ENABLE_DEBUG === "true" || !!process.env.DB_ENABLE_DEBUG
 };
 
 export default config;
