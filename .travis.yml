@@ -15,6 +15,7 @@ before_install:
 script:
   - docker-compose -f ./docker-compose.debug.yml up -d
   - docker-compose -f docker-compose.tests.yml up
+  - cd node && node evaluate.js
 
 cache:
   directories:
