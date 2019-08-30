@@ -8,7 +8,8 @@
     "build": "tsc",
     "start": "node --inspect=0.0.0.0 ./build/index.js",
     "test": "mocha",
-    "ci:test": "yarn && yarn build && yarn test"
+    "ci:test": "yarn && yarn build && yarn test",
+    "evaluate": "node evaluate.js"
   },
   "author": "",
   "license": "MIT",
