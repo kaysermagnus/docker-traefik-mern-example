@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  node:
+    image: node:lts-alpine
+    container_name: node_backend
+    volumes:
+      - ./node:/app
+    working_dir: /app
+    environment:
+      - SERVER_TYPE=restify
+    ports:
+      - "8080"
+    labels:
+      - "traefik.frontend.rule=Host:node.docker.localhost"
+    command: yarn ci:test
