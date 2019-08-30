@@ -52,4 +52,4 @@ services:
       - "8080"
     labels:
       - "traefik.frontend.rule=Host:node.docker.localhost"
-    command: yarn test
+    command: yarn ci:test
