@@ -14,7 +14,7 @@ describe("Server tests", () => {
   it("Express server should a Server instance", async () => {
     const ExpressServer = await startExpressServer();
     serve = ExpressServer.listen(8080);
-    expect(serve).to.be.instanceOf(Server);
+    expect(serve).to.not.be.instanceOf(Server);
   });
 
   it("Restify server should a Server instance", async () => {
