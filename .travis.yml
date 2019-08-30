@@ -13,7 +13,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 script:
-  - docker-compose -f ./docker-compose.debug.yml up
+  - docker-compose -f ./docker-compose.debug.yml up -d
+  - docker-compose -f docker-compose.tests.yml up
 
 cache:
   directories:

@@ -30,26 +30,26 @@ services:
   #   labels:
   #     #  - "traefik.enable=false"
   #     - "traefik.frontend.rule=Host:redis.docker.localhost"
-  node:
-    image: node:lts-alpine
-    container_name: node_backend
-    volumes:
-      - ./node:/app
-    working_dir: /app
-    # depends_on:
-    #   - db
-    #   - redis
-    environment:
-      - SERVER_TYPE=restify
-      # - SERVER_TYPE=express
-      - DB_HOST=mysql_db
-      - DB_PORT=3306
-      - DB_USER=root
-      - DB_PASSWORD=example1234
-      - DB_NAME=test
-      - DB_DROP_SCHEMA=true
-    ports:
-      - "8080"
-    labels:
-      - "traefik.frontend.rule=Host:node.docker.localhost"
-    command: yarn ci:test
+  # node:
+  #   image: node:lts-alpine
+  #   container_name: node_backend
+  #   volumes:
+  #     - ./node:/app
+  #   working_dir: /app
+  #   # depends_on:
+  #   #   - db
+  #   #   - redis
+  #   environment:
+  #     - SERVER_TYPE=restify
+  #     # - SERVER_TYPE=express
+  #     - DB_HOST=mysql_db
+  #     - DB_PORT=3306
+  #     - DB_USER=root
+  #     - DB_PASSWORD=example1234
+  #     - DB_NAME=test
+  #     - DB_DROP_SCHEMA=true
+  #   ports:
+  #     - "8080"
+  #   labels:
+  #     - "traefik.frontend.rule=Host:node.docker.localhost"
+  #   command: yarn ci:test
