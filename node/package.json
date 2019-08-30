@@ -7,7 +7,7 @@
     "prestart": "yarn build",
     "build": "tsc",
     "start": "node --inspect=0.0.0.0 ./build/index.js",
-    "test": "nyc mocha",
+    "test": "mocha",
     "ci:test": "yarn && yarn build && yarn test"
   },
   "author": "",

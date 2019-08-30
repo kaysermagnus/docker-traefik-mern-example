@@ -5,17 +5,21 @@ import { startExpressServer, startRestifyServer } from "../src/server";
 import { Server } from "http";
 
 describe("Server tests", () => {
+  let serve: Server;
+
+  afterEach(() => {
+    if (serve) serve.close();
+  });
+
   it("Express server should a Server instance", async () => {
     const ExpressServer = await startExpressServer();
-    const serve = ExpressServer.listen(8080);
-    expect(serve).to.be.instanceOf(Server);
-    serve.close();
+    serve = ExpressServer.listen(8080);
+    expect(serve).to.not.be.instanceOf(Server);
   });
 
   it("Restify server should a Server instance", async () => {
     const RestifyServer = await startRestifyServer();
-    const serve = RestifyServer.listen(8081);
+    serve = RestifyServer.listen(8081);
     expect(serve).to.be.instanceOf(Server);
-    serve.close();
   });
 });
