@@ -15,6 +15,7 @@ cache:
 
 env:
   - DOCKER_COMPOSE_VERSION=1.24.1
+  - - CC_TEST_REPORTER_ID=1f4428b1344c82caf2b6ec56c36fb4c72e11e0355b50a1590625fc2c13e0d6a3
 
 before_install:
   - sudo /etc/init.d/mysql stop
@@ -27,7 +28,6 @@ before_install:
 script:
   - docker-compose -f ./docker-compose.pre.tests.yml up -d
   - docker-compose -f ./docker-compose.tests.yml up
-  - sh run_evaluate.sh
 
 after_script:
   - sh run_coverage.sh
