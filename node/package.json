@@ -10,7 +10,7 @@
     "start:debug": "nodemon",
     "start:debugs": "nodemon --watch src/**/* -e ts,json --exec ts-node --inspect=0.0.0.0 -r ts-node/register ./src/index.ts",
     "start:debugz": "node --inspect=0.0.0.0 ./build/index.js",
-    "test": "nyc mocha --exit",
+    "test": "nyc _mocha --exit",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "coveralls-coverage": "cat ./lcov.info | coveralls",
     "codeclimate-coverage": "cat ./lcov.info | codeclimate-test-reporter",
