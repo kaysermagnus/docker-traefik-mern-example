@@ -1,6 +1,10 @@
 import restify from "restify";
 import serverConfig from "./config";
-
+/**
+ * Creates Restify Server
+ *
+ * @returns
+ */
 const webServer = async () => {
   console.info("Starting Restify server");
   const app = restify.createServer();

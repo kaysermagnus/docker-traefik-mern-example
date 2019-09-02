@@ -11,11 +11,11 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - chmod +x run_evaluate.sh
+  - chmod +x *.sh
 
 script:
-  - docker-compose -f ./docker-compose.debug.yml up -d
-  - docker-compose -f docker-compose.tests.yml up
+  - sh start-pre-tests.sh
+  - sh start-tests.sh
   - sh run_evaluate.sh
 
 cache:

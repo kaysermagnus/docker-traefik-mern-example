@@ -9,47 +9,48 @@ services:
       - "8080:8080" # The Web UI (enabled by --api)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
-  # db:
-  #   image: mysql:latest
-  #   container_name: mysql_db
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   restart: always
-  #   ports:
-  #     - "3306:3306"
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: example1234
-  #     MYSQL_USER: test
-  #     # MYSQL_PASSWORD: 1234
-  #     MYSQL_DATABASE: test
-  #   labels:
-  #     - "traefik.enable=false"
-  #     # - "traefik.frontend.rule=Host:mysql.docker.localhost"
+  db:
+    image: mysql:latest
+    container_name: mysql_db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: example1234
+      MYSQL_USER: test
+      MYSQL_DATABASE: test
+    labels:
+      - "traefik.enable=false"
+      # - "traefik.frontend.rule=Host:mysql.docker.localhost"
   # redis:
   #   image: redis:alpine
   #   restart: always
   #   labels:
-  #     #  - "traefik.enable=false"
+  #     - "traefik.enable=false"
   #     - "traefik.frontend.rule=Host:redis.docker.localhost"
-  # node:
-  #   image: node:lts-alpine
-  #   container_name: node_backend
-  #   volumes:
-  #     - ./node:/app
-  #   working_dir: /app
-  #   # depends_on:
-  #   #   - db
-  #   #   - redis
-  #   environment:
-  #     - SERVER_TYPE=restify
-  #     # - SERVER_TYPE=express
-  #     - DB_HOST=mysql_db
-  #     - DB_PORT=3306
-  #     - DB_USER=root
-  #     - DB_PASSWORD=example1234
-  #     - DB_NAME=test
-  #     - DB_DROP_SCHEMA=true
-  #   ports:
-  #     - "8080"
-  #   labels:
-  #     - "traefik.frontend.rule=Host:node.docker.localhost"
-  #   command: yarn ci:test
+  node:
+    image: node:lts-alpine
+    container_name: node_backend
+    volumes:
+      - ./node:/app
+    working_dir: /app
+    depends_on:
+      - db
+      - redis
+    environment:
+      - SERVER_TYPE=restify #choose between restify or express
+      - DB_HOST=mysql_db
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=example1234
+      - DB_NAME=test
+      - DB_DROP_SCHEMA=true
+      # - DB_ENABLE_DEBUG=true
+      - SERVER_USE_CONFIG=true
+    ports:
+      - "8080"
+      - "9229:9229"
+    labels:
+      - "traefik.frontend.rule=Host:node.docker.localhost"
+    command: yarn start:debug
