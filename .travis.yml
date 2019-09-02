@@ -9,8 +9,14 @@ language: node_js
 services:
   - docker
 
+cache:
+  directories:
+    - node_modules
+
 env:
   - DOCKER_COMPOSE_VERSION=1.24.1
+  global:
+    - CC_TEST_REPORTER_ID=1f4428b1344c82caf2b6ec56c36fb4c72e11e0355b50a1590625fc2c13e0d6a3
 
 before_install:
   - sudo /etc/init.d/mysql stop
@@ -18,13 +24,12 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - chmod +x run_evaluate.sh
+  - chmod +x *.sh
 
 script:
   - docker-compose -f ./docker-compose.pre.tests.yml up -d
   - docker-compose -f ./docker-compose.tests.yml up
   - sh run_evaluate.sh
 
-cache:
-  directories:
-    - node_modules
+after_script:
+  - sh run_coverage.sh
