@@ -12,8 +12,8 @@
     "start:debugz": "node --inspect=0.0.0.0 ./build/index.js",
     "test": "nyc mocha --exit",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
-    "coveralls-coverage": "coveralls < lcov.info",
-    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
+    "coveralls-coverage": "cat ./lcov.info | coveralls",
+    "codeclimate-coverage": "cat ./lcov.info | codeclimate-test-reporter",
     "coverage": "yarn generate-lcov && yarn coveralls-coverage && yarn codeclimate-coverage",
     "ci:test": "yarn && yarn build && yarn test",
     "evaluate": "node evaluate.js"
