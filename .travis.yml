@@ -1,3 +1,9 @@
+# safelist
+branches:
+  only:
+    - master
+    - stable
+
 language: node_js
 
 services:
@@ -7,6 +13,7 @@ env:
   - DOCKER_COMPOSE_VERSION=1.24.1
 
 before_install:
+  - sudo /etc/init.d/mysql stop
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
@@ -14,8 +21,8 @@ before_install:
   - chmod +x run_evaluate.sh
 
 script:
-  - docker-compose -f ./docker-compose.debug.yml up -d
-  - docker-compose -f docker-compose.tests.yml up
+  - docker-compose -f ./docker-compose.pre.tests.yml up -d
+  - docker-compose -f ./docker-compose.tests.yml up
   - sh run_evaluate.sh
 
 cache:

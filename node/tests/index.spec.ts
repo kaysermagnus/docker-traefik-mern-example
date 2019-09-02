@@ -11,13 +11,13 @@ describe("Server tests", () => {
     if (serve) serve.close();
   });
 
-  it("Express server should a Server instance", async () => {
+  it("Express server should be a Server instance", async () => {
     const ExpressServer = await startExpressServer();
     serve = ExpressServer.listen(8080);
     expect(serve).to.be.instanceOf(Server);
   });
 
-  it("Restify server should a Server instance", async () => {
+  it("Restify server should be a Server instance", async () => {
     const RestifyServer = await startRestifyServer();
     serve = RestifyServer.listen(8081);
     expect(serve).to.be.instanceOf(Server);

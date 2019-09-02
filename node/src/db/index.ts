@@ -1,36 +1,65 @@
-import DbConnection from "./DbConnection";
+import { createConnection, Connection, ConnectionOptions } from "typeorm";
+import getDbConfig from "./configuration";
 import { setUsers } from "./seedTables";
+import { v4 as uuid } from "uuid";
 
-let retryConnection = 5;
+class DBInstance {
+  static retryConnection = 5;
+  static connection: Connection;
 
-/**
- * Starts DB Instance
- *
- */
-const initDB = async () => {
-  try {
-    console.info("Start db connection");
-    await DbConnection.startConnection();
-    const conn = await DbConnection.getConnection();
-    console.info("Db connection:", conn.isConnected);
-    startSeeding();
-  } catch (error) {
-    console.error("Failed db connection", error);
-    if (retryConnection) {
-      retryConnection--;
-      // Wait 5 seconds
-      setTimeout(() => {
-        console.info(
-          `Retrying connection to DB - count: ${5 - retryConnection}/5`
-        );
-        initDB();
-      }, 5000);
-    }
+  private constructor() {}
+
+  static async initDB(): Promise<Error | null> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        console.info("Start db connection");
+
+        const name = uuid();
+        console.log("connection name", name);
+
+        if (this.connection && this.connection.name === name) {
+          // Already an active connection
+          resolve(null);
+        }
+
+        const config = getDbConfig(name);
+
+        console.info("DB Configuration:", config);
+
+        this.connection = await createConnection(config);
+
+        console.info("Db connection:", this.connection.isConnected);
+        await this.startSeeding();
+        resolve(null);
+      } catch (error) {
+        console.error("Failed db connection", error);
+        if (this.retryConnection > 0) {
+          this.retryConnection--;
+          // Wait 5 seconds and try again
+          setTimeout(() => {
+            console.info(
+              `Retrying connection to DB - count: ${5 - this.retryConnection}/5`
+            );
+            return this.initDB();
+          }, 5000);
+        } else {
+          console.info("No more retries");
+          reject(error);
+        }
+      }
+    });
   }
-};
 
-const startSeeding = () => {
-  setUsers();
-};
+  static getConnection() {
+    return this.connection;
+  }
+  /**
+   * Start seeding data to DB
+   *
+   */
+  private static startSeeding = async () => {
+    await setUsers();
+  };
+}
 
-export default initDB;
+export default DBInstance;

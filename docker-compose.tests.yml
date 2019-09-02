@@ -8,9 +8,17 @@ services:
       - ./node:/app
     working_dir: /app
     environment:
-      - SERVER_TYPE=restify
+      - DB_HOST=mysql_db
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=example1234
+      - DB_NAME=test
+      - DB_DROP_SCHEMA=true
+      - SERVER_USE_CONFIG=true
     ports:
-      - "8080"
+      - "8080" # express port
+      - "8081" # restify port
+      - "9229:9229"
     labels:
       - "traefik.frontend.rule=Host:node.docker.localhost"
     command: yarn ci:test

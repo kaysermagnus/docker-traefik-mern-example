@@ -1,0 +1,1 @@
+docker-compose -f ./docker-compose.pre.tests.yml up -d
