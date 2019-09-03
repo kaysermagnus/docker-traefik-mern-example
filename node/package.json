@@ -13,8 +13,8 @@
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "codeclimate-coverage": "cat ./lcov.info | codeclimate-test-reporter",
     "coveralls-coverage": "cat ./lcov.info | coveralls",
-    "coverage": "yarn generate-lcov && yarn codeclimate-coverage && yarn coveralls-coverage",
-    "ci:test": "yarn && yarn test",
+    "coverage": "yarn test && yarn generate-lcov && yarn codeclimate-coverage && yarn coveralls-coverage",
+    "ci:test": "yarn && yarn coverage",
     "evaluate": "node evaluate.js"
   },
   "author": "",
