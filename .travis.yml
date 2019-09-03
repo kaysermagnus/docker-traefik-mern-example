@@ -30,5 +30,5 @@ script:
   - docker-compose -f ./docker-compose.tests.yml up
 
 after_script:
-  - chmod -R 777 ./node/build
+  - sudo chmod -R 777 ./node/build
   - sh run_coverage.sh
