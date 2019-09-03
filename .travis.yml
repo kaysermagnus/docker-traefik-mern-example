@@ -24,11 +24,11 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - chmod +x *.sh
-  - chmod -R 777 ./node/build
 
 script:
   - docker-compose -f ./docker-compose.pre.tests.yml up -d
   - docker-compose -f ./docker-compose.tests.yml up
 
 after_script:
+  - chmod -R 777 ./node/build
   - sh run_coverage.sh
