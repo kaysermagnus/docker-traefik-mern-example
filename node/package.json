@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run-script build",
-    "pretest": "npm run-script build",
+    "prestart": "yarn build",
+    "pretest": "yarn build",
     "build": "tsc",
     "start": "node ./build/index.js",
     "start:debug": "nodemon",
@@ -13,8 +13,8 @@
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "codeclimate-coverage": "cat ./lcov.info | codeclimate-test-reporter",
     "coveralls-coverage": "cat ./lcov.info | coveralls",
-    "coverage": "npm test && npm run-script generate-lcov && npm run-script codeclimate-coverage && npm run-script coveralls-coverage",
-    "ci:test": "npm install && npm run-script coverage",
+    "coverage": "yarn generate-lcov && yarn codeclimate-coverage && yarn coveralls-coverage",
+    "ci:test": "yarn && yarn test",
     "evaluate": "node evaluate.js"
   },
   "author": "",
