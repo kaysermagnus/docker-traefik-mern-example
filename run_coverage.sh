@@ -1,2 +1,2 @@
 cd ./node
-yarn coverage
+npm run ci:test

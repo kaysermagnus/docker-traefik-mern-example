@@ -14,7 +14,7 @@
     "codeclimate-coverage": "cat ./lcov.info | codeclimate-test-reporter",
     "coveralls-coverage": "cat ./lcov.info | coveralls",
     "coverage": "npm test && npm run-script generate-lcov && npm run-script codeclimate-coverage && npm run-script coveralls-coverage",
-    "ci:test": "npm install && npm coverage",
+    "ci:test": "npm install && npm run-script coverage",
     "evaluate": "node evaluate.js"
   },
   "author": "",
