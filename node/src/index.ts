@@ -1,3 +1,4 @@
+require("source-map-support").install();
 import { startExpressServer, startRestifyServer } from "./server";
 
 switch (process.env.SERVER_TYPE) {

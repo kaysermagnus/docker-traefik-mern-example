@@ -1,0 +1,15 @@
+{
+  "diff": true,
+  "extension": ["js"],
+  "opts": false,
+  "package": "./package.json",
+  "reporter": "mochawesome",
+  "slow": 75,
+  "timeout": 20000,
+  "ui": "bdd",
+  "color": true,
+  "recursive": true,
+  "spec": "build/tests/**/*.spec.js",
+  "require": "source-map-support/register",
+  "check-leaks": true
+}
