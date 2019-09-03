@@ -13,8 +13,8 @@
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "codeclimate-coverage": "cat ./lcov.info | codeclimate-test-reporter",
     "coveralls-coverage": "cat ./lcov.info | coveralls",
-    "coverage": "npm run-script generate-lcov && npm run-script codeclimate-coverage && npm run-script coveralls-coverage",
-    "ci:test": "npm install && npm test",
+    "coverage": "npm test && npm run-script generate-lcov && npm run-script codeclimate-coverage && npm run-script coveralls-coverage",
+    "ci:test": "npm install && npm coverage",
     "evaluate": "node evaluate.js"
   },
   "author": "",
