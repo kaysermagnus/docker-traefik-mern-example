@@ -10,7 +10,7 @@
     "start": "node ./build/index.js",
     "start:debug": "nodemon",
     "test": "nyc mocha --exit ",
-    "generate-lcov": "nyc report --reporter=lcov > ./coverage/lcov.info",
+    "generate-lcov": "nyc report --reporter=lcov > lcov.info",
     "codeclimate-coverage": "cat ./lcov.info | codeclimate-test-reporter",
     "coveralls-coverage": "cat ./lcov.info | coveralls",
     "coverage": "yarn test && yarn generate-lcov",
