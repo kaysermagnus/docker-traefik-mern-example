@@ -34,4 +34,4 @@ script:
   - docker-compose -f ./docker-compose.pre.tests.yml up -d
   - docker-compose -f ./docker-compose.tests.yml up
 after_script:
-  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+  - "./cc-test-reporter after-build -t lcov --exit-code $TRAVIS_TEST_RESULT"
