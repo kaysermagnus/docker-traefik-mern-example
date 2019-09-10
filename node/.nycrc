@@ -9,6 +9,7 @@
     "check-coverage": true,
     "include": ["src"],
     "reporter": ["lcov", "text", "html"],
+    "report-dir": "./coverage",
     "exclude": [
       "**/*.d.ts",
       "coverage/**",
