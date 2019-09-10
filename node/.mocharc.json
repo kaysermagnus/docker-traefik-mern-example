@@ -10,6 +10,6 @@
   "color": true,
   "recursive": true,
   "spec": "tests/**/*.spec.ts",
-  "require": "ts-node/register",
+  "require": ["ts-node/register", "source-map-support/register"],
   "check-leaks": true
 }
