@@ -16,7 +16,7 @@ cache:
 env:
   global:
     - DOCKER_COMPOSE_VERSION=1.24.1
-    - CODECLIMATE_REPO_TOKEN=1f4428b1344c82caf2b6ec56c36fb4c72e11e0355b50a1590625fc2c13e0d6a3
+    - CC_TEST_REPORTER_ID=1f4428b1344c82caf2b6ec56c36fb4c72e11e0355b50a1590625fc2c13e0d6a3
 
 before_install:
   - sudo /etc/init.d/mysql stop
@@ -26,10 +26,16 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - chmod +x *.sh
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
   - docker-compose -f ./docker-compose.pre.tests.yml up -d
   - docker-compose -f ./docker-compose.tests.yml up
 
-# after_script:
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 #   - sudo chmod -R 777 ./node/build
 #   - sh run_coverage.sh
