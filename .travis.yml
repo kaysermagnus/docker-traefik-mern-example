@@ -1,41 +1,37 @@
-# safelist
 branches:
   only:
     - master
     - stable
-
 language: node_js
-
 services:
   - docker
-
 cache:
   directories:
     - node_modules
-
 env:
   global:
     - DOCKER_COMPOSE_VERSION=1.24.1
-    - CC_TEST_REPORTER_ID=1f4428b1344c82caf2b6ec56c36fb4c72e11e0355b50a1590625fc2c13e0d6a3
+
+addons:
+  code_climate:
+    repo_token:
+      secure: fZbrUY8Fv4xyjKK1WLCp6i6qCNCP9WBikJdoZWAwvGZX10NCPjAk3sre/nZC5Z+SJLNLkx+uJg8r1K3N8tju3mZyKZGAhf5NQ6Kz3NWK50HcU3EA48LrhRAk5C5wPrpB3xR7/RIHOWQxvlnyPwh+fzZnEqCnS9XnwyLXguKgu7QGSnADOOxraUCi82fltBFqu+qw0tHtpGuSE3Lk4EQz8X/N8sdLWR8r4WvJI8O7iaiHg80PV+7qaKH5ErHrgmYxl9+8fFfk8MUKF+7qcQ7CY2ACHPMncQn2MGz/g+Pr8zRQOogRQ79fZrK2FkvH8LHAsArKvXVJKgiCbxWWAEmvYxbcCvUwQ42r5BsUquf0DXWSPEZegsCJq45Ev7zyiv+fYGrYTBk6RslE4MhT9TcVXiiP7l+iEZTcTSE3CMe7tJj793kOX+w9oUyHblGZjSC5Ngy24cCi5twHzLpjH1fqFWWhiBk77Hi+DLTCAJ9BNL92DTBHoNtzgMAUD3DwZWugnuu36jIDYkBuxjWAyq2EDCwQuuq80VUW3uLS96uZE3t5PIRfvWWnf17pb1EwQHH5401qG/JHLuamvlHfr8eMYlZF3aR0PVjtOfNTaejqqLlpAMO1rq1821ddJwzr6RO74xUi+Mrhax23i511CUnuIiXi39drqzEFc90a+imr3VE=
 
 before_install:
   - sudo /etc/init.d/mysql stop
   - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+    -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - chmod +x *.sh
-
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+    > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-
+  - "./cc-test-reporter before-build"
 script:
   - docker-compose -f ./docker-compose.pre.tests.yml up -d
   - docker-compose -f ./docker-compose.tests.yml up
-
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-#   - sudo chmod -R 777 ./node/build
-#   - sh run_coverage.sh
+  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
