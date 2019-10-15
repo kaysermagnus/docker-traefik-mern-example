@@ -1,6 +1,6 @@
 {
   "diff": true,
-  "extension": ["ts"],
+  "extension": ["js"],
   "opts": false,
   "package": "./package.json",
   "reporter": "mochawesome",
@@ -9,7 +9,7 @@
   "ui": "bdd",
   "color": true,
   "recursive": true,
-  "spec": "tests/**/*.spec.ts",
-  "require": ["ts-node/register", "source-map-support/register"],
+  "spec": "build/tests/**/*.spec.js",
+  "require": "source-map-support/register",
   "check-leaks": true
 }

@@ -1,4 +1,27 @@
 {
-    "extends": "@istanbuljs/nyc-config-typescript",
-    "all": true
+  "nyc": {
+    "cache": false,
+    "all": true,
+    "sourceMap": true,
+    "instrument": true,
+    "exclude-after-remap": false,
+    "extension": [".ts"],
+    "check-coverage": true,
+    "include": ["src"],
+    "reporter": ["lcov", "text", "html"],
+    "report-dir": "./coverage",
+    "exclude": [
+      "**/*.d.ts",
+      "coverage/**",
+      "js/**",
+      "builds/**",
+      "config/**",
+      "**/spec/**",
+      "**/*.spec.ts",
+      "**/node_modules/**",
+      "gulpfile.js",
+      "dummy-start.ts"
+    ],
+    "extends": "@istanbuljs/nyc-config-typescript"  
+  }
 }
