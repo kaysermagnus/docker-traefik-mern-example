@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "yarn build",
+    "prestart": "npm run build",
     "build": "tsc",
     "start": "node ./build/index.js",
     "start:debug": "nodemon",
@@ -12,7 +12,7 @@
     "start:debugz": "node --inspect=0.0.0.0 ./build/index.js",
     "test": "nyc mocha --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "ci:test": "yarn && yarn build && yarn test",
+    "ci:test": "npm install && npm run build && npm run test",
     "evaluate": "node evaluate.js"
   },
   "author": "",
@@ -29,7 +29,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.0",
     "mysql": "^2.17.1",
-    "next": "^9.3.2",
+    "next": "^9.4.2",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
