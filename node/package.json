@@ -35,11 +35,11 @@
     "passport-local": "^1.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "reflect-metadata": "^0.1.13",
     "response-time": "^2.3.2",
     "restify": "^8.4.0",
-    "typeorm": "^0.2.18",
+    "typeorm": "^0.2.25",
     "typescript": "^3.5.3",
     "uuid": "^3.3.3"
   },
